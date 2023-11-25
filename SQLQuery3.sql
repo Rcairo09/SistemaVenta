@@ -48,3 +48,10 @@ INSERT INTO Categoria(descripcion,esActivo) values
 ('Teclados',1),
 ('Monitores',1),
 ('Microfonos',1)
+
+
+select * from TipoDocumentoVenta
+
+insert into TipoDocumentoVenta(descripcion,esActivo) values
+('Boleta',1),
+('Factura',1)

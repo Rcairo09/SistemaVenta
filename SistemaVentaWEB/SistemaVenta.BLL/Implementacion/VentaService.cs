@@ -59,8 +59,8 @@ namespace SistemaVenta.BLL.Implementacion
             if (fechaInicio != "" && fechaFin != "")
             {
 
-                DateTime fech_inicio = DateTime.ParseExact(fechaInicio, "dd/MM/yyyy", new CultureInfo("es-PE"));
-                DateTime fech_fin = DateTime.ParseExact(fechaFin, "dd/MM/yyyy", new CultureInfo("es-PE"));
+                DateTime fech_inicio = DateTime.ParseExact(fechaInicio, "dd/MM/yyyy", new CultureInfo("es-NI"));
+                DateTime fech_fin = DateTime.ParseExact(fechaFin, "dd/MM/yyyy", new CultureInfo("es-NI"));
 
                 return query.Where(v =>
                     v.FechaRegistro.Value.Date >= fech_inicio.Date &&
@@ -96,8 +96,8 @@ namespace SistemaVenta.BLL.Implementacion
     
         public async Task<List<DetalleVenta>> Reporte(string fechaInicio, string fechaFin)
         {
-            DateTime fech_inicio = DateTime.ParseExact(fechaInicio, "dd/MM/yyyy", new CultureInfo("es-PE"));
-            DateTime fech_fin = DateTime.ParseExact(fechaFin, "dd/MM/yyyy", new CultureInfo("es-PE"));
+            DateTime fech_inicio = DateTime.ParseExact(fechaInicio, "dd/MM/yyyy", new CultureInfo("es-NI"));
+            DateTime fech_fin = DateTime.ParseExact(fechaFin, "dd/MM/yyyy", new CultureInfo("es-NI"));
 
             List<DetalleVenta> lista = await _repositorioVenta.Reporte(fech_inicio, fech_fin);
 
