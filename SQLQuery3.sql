@@ -32,3 +32,19 @@ insert into rol(descripcion,esActivo) values
 
 insert into Usuario(nombre,correo,telefono,idRol,urlFoto,nombreFoto,clave,esActivo) values
 ('Usuario Test','usertest@example.com','909090',1,'','','a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3',1)
+
+
+
+select * from Negocio
+
+insert into Negocio(idNegocio,urlLogo,nombreLogo,numeroDocumento,nombre,correo,direccion,telefono,porcentajeImpuesto,simboloMoneda)
+values(1,'','','','','','','',0,'')
+
+SELECT * FROM Categoria
+
+INSERT INTO Categoria(descripcion,esActivo) values
+('Computadoras',1),
+('Laptops',1),
+('Teclados',1),
+('Monitores',1),
+('Microfonos',1)
