@@ -76,15 +76,12 @@
          }
     </style>
 </head>
-<body >
+<body>
 
     <div class="contenedor">
 
         <table style="width:100%">
             <tr>
-                <td>
-                    <img src="@Model.negocio.UrlLogo" style="width: 120px;height:120px"/>
-                </td>
                 <td style="text-align:right">
                     <table style="margin-right:0;margin-left:auto">
                         <tr><td><p class="title2">NÚMERO VENTA</p></td></tr>
@@ -94,10 +91,10 @@
             </tr>
         </table>
         <br />
-         <table style="width:100%">
+        <table style="width:100%">
             <tr>
                 <td>
-                    <table >
+                    <table>
                         <tr>
                             <td>
                                 <p class="title">@Model.negocio.Nombre.ToUpper()</p>
@@ -111,6 +108,7 @@
                                 <p class="text">Correo: @Model.negocio.Correo</p>
                             </td>
                         </tr>
+                        <!-- Agrega más información aquí -->
                     </table>
                 </td>
                 <td style="text-align:right">
@@ -124,6 +122,7 @@
                         <tr>
                             <td><p class="text">@Model.venta.DocumentoCliente</p></td>
                         </tr>
+                        <!-- Agrega más detalles sobre la venta aquí -->
                     </table>
                 </td>
             </tr>
@@ -131,13 +130,14 @@
         <br />
         <br />
 
-        <table class="tbproductos" style="width:100%">
+        <table class="tbproductos">
             <thead>
                 <tr>
                     <th class="tbth">Producto</th>
-                    <th class="tbth" style="width:130px">Cantidad</th>
-                    <th class="tbth" style="width:130px">Precio</th>
-                    <th class="tbth" style="width:130px">Total</th>
+                    <th class="tbth">Cantidad</th>
+                    <th class="tbth">Precio</th>
+                    <th class="tbth">Total</th>
+                    <!-- Agrega más encabezados si es necesario -->
                 </tr>
             </thead>
             <tbody>
@@ -148,40 +148,40 @@
                             <td class="td-item"><p class="item">@item.DescripcionProducto</p></td>
                             <td class="td-item"><p class="item">@item.Cantidad</p></td>
                             <td class="td-item"><p class="item">@Model.negocio.SimboloMoneda @item.Precio</p></td>
-                            <td style="background-color:#EDF6F9"><p class="item">@Model.negocio.SimboloMoneda @item.Total</p></td>
+                            <td class="td-item"><p class="item">@Model.negocio.SimboloMoneda @item.Total</p></td>
+                            <!-- Agrega más detalles sobre los productos aquí -->
                         </tr>
-
                     }
                 }
                 <tr>
                     <td colspan="2" rowspan="3">
                     </td>
-                    <td  class="td-item">
+                    <td class="td-item">
                         <p class="item-2">Sub Total</p>
                     </td>
-                     <td class="item-3">
-                         <p>@Model.negocio.SimboloMoneda @Model.venta.SubTotal</p>
+                    <td class="td-item">
+                        <p>@Model.negocio.SimboloMoneda @Model.venta.SubTotal</p>
                     </td>
                 </tr>
                 <tr>
                     <td class="td-item">
-                        <p class="item-2" >IGV</p>
+                        <p class="item-2">IGV</p>
                     </td>
-                     <td class="item-3">
-                         <p>@Model.negocio.SimboloMoneda @Model.venta.ImpuestoTotal</p>
+                    <td class="td-item">
+                        <p>@Model.negocio.SimboloMoneda @Model.venta.ImpuestoTotal</p>
                     </td>
                 </tr>
-                 <tr>
+                <tr>
                     <td class="item-3">
-                        <p >Total</p>
+                        <p>Total</p>
                     </td>
-                     <td class="item-3">
-                         <p>@Model.negocio.SimboloMoneda @Model.venta.Total</p>
+                    <td class="item-3">
+                        <p>@Model.negocio.SimboloMoneda @Model.venta.Total</p>
                     </td>
                 </tr>
             </tbody>
         </table>
-       
+
     </div>
 
 </body>

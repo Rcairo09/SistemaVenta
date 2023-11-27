@@ -10916,11 +10916,12 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://images.unsplash.com/photo-1541574823565-f1d660886187?w=600");
-  /* background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800"); */
-  background-position: center;
-  background-size: cover;
+    background: url("https://firebasestorage.googleapis.com/v0/b/app-web-7a2c9.appspot.com/o/IMAGENES_LOGO%2F53cbfa20de40464cb242740db21fc66b.jpeg?alt=media&token=a90d8d8f-2329-45d6-b518-6cc2a4e3cacf");
+    /* background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800"); */
+    background-position: center;
+    background-size: cover;
 }
+
 
 .bg-register-image {
   background: url("https://images.unsplash.com/photo-1541574823565-f1d660886187?w=600");
