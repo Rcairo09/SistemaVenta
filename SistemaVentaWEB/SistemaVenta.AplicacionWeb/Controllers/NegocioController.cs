@@ -8,6 +8,7 @@ using SistemaVenta.AplicacionWeb.Utilidades.Response;
 using SistemaVenta.BLL.Interfaces;
 using SistemaVenta.Entity;
 using Microsoft.AspNetCore.Authorization;
+using SistemaVenta.AplicacionWeb.Utilidades.CustomFilter;
 
 namespace SistemaVenta.AplicacionWeb.Controllers
 {
@@ -23,7 +24,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
             _mapper = mapper;
             _negocioService = negocioService;
         }
-
+        [ClaimRequirement(controlador: "Negocio", accion: "Index")]
         public IActionResult Index()
         {
             return View();

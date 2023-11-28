@@ -94,8 +94,8 @@ UPDATE Menu SET idMenuPadre = idMenu where idMenuPadre is null
 
 --________________________________ INSERTAR ROL MENU ________________________________
 select * from Menu
-select * from RolMenu
 SELECT * FROM ROL
+select * from RolMenu
 
 --*administrador
 INSERT INTO RolMenu(idRol,idMenu,esActivo) values

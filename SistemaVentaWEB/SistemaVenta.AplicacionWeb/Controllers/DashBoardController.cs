@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 using SistemaVenta.AplicacionWeb.Models.ViewModels;
+using SistemaVenta.AplicacionWeb.Utilidades.CustomFilter;
 using SistemaVenta.AplicacionWeb.Utilidades.Response;
 using SistemaVenta.BLL.Interfaces;
 
@@ -17,6 +18,8 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         {
             _dashboardServicio = dashboardServicio;
         }
+
+        [ClaimRequirement(controlador:"Dashboard", accion:"Index")]
         public IActionResult Index()
         {
             return View();

@@ -7,6 +7,7 @@ using SistemaVenta.AplicacionWeb.Utilidades.Response;
 using SistemaVenta.BLL.Interfaces;
 using SistemaVenta.Entity;
 using Microsoft.AspNetCore.Authorization;
+using SistemaVenta.AplicacionWeb.Utilidades.CustomFilter;
 
 namespace SistemaVenta.AplicacionWeb.Controllers
 {
@@ -24,6 +25,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
             _productoServicio = productoServicio;
 
         }
+        [ClaimRequirement(controlador: "Producto", accion: "Index")]
         public IActionResult Index()
         {
             return View();

@@ -40,7 +40,12 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(VMUsuarioLogin modelo)
         {
-
+            if (modelo.Clave == null || modelo.Correo == null)
+            {
+                ViewData["Mensaje"] = "Es necesario llenar todos los campos";
+                return View();
+            }
+            ViewData["Mensaje"] = null;
             Usuario usuario_encontrado = await _usuarioServicio.ObtenerPorCredenciales(modelo.Correo, modelo.Clave);
 
             if (usuario_encontrado == null) {

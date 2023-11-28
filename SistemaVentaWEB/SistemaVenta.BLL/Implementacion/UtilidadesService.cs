@@ -19,24 +19,34 @@ namespace SistemaVenta.BLL.Implementacion
         }
         public string ConvertirSha256(string texto)
         {
-         
+            if (texto == null)
+            {
+                throw new ArgumentNullException(nameof(texto), "La cadena de entrada no puede ser nula");
+            }
+
             StringBuilder sb = new StringBuilder();
+            try
+            {
+                using (SHA256 hash = SHA256Managed.Create())
+                {
+                    Encoding enc = Encoding.UTF8;
 
-            using (SHA256 hash = SHA256Managed.Create()) {
-                Encoding enc = Encoding.UTF8;
+                    byte[] result = hash.ComputeHash(enc.GetBytes(texto));
 
-                byte[] result = hash.ComputeHash(enc.GetBytes(texto));
-
-                foreach (byte b in result) {
-                    sb.Append(b.ToString("x2"));
+                    foreach (byte b in result)
+                    {
+                        sb.Append(b.ToString("x2"));
+                    }
                 }
-
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al calcular el hash SHA256", ex);
             }
 
             return sb.ToString();
-
         }
 
-      
+
     }
 }

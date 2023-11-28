@@ -10,6 +10,7 @@ using DinkToPdf;
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using SistemaVenta.AplicacionWeb.Utilidades.CustomFilter;
 
 namespace SistemaVenta.AplicacionWeb.Controllers
 {
@@ -32,12 +33,16 @@ namespace SistemaVenta.AplicacionWeb.Controllers
             _mapper = mapper;
             _converter = converter;
         }
-
+       
+        
+        [ClaimRequirement(controlador: "Venta", accion: "NuevaVenta")]
         public IActionResult NuevaVenta()
         {
             return View();
         }
-
+        
+        
+        [ClaimRequirement(controlador: "Venta", accion: "HistorialVenta")]
         public IActionResult HistorialVenta()
         {
             return View();

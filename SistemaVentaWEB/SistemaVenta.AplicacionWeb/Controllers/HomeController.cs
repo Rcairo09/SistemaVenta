@@ -45,6 +45,11 @@ namespace SistemaVenta.AplicacionWeb.Controllers
         {
             return View();
         }
+
+        public IActionResult SinPermiso()
+        {
+            return View();
+        }
         [HttpGet]
         public async Task<IActionResult> ObtenerUsuario()
         {
