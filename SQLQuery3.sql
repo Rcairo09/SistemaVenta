@@ -55,3 +55,67 @@ select * from TipoDocumentoVenta
 insert into TipoDocumentoVenta(descripcion,esActivo) values
 ('Boleta',1),
 ('Factura',1)
+
+
+select * from Menu
+
+--*menu padre
+insert into Menu(descripcion,icono,controlador,paginaAccion,esActivo) values
+('DashBoard','fas fa-fw fa-tachometer-alt','DashBoard','Index',1)
+
+insert into Menu(descripcion,icono,esActivo) values
+('Administración','fas fa-fw fa-cog',1),
+('Inventario','fas fa-fw fa-clipboard-list',1),
+('Ventas','fas fa-fw fa-tags',1),
+('Reportes','fas fa-fw fa-chart-area',1)
+
+--*menu hijos Administracion
+insert into Menu(descripcion,idMenuPadre, controlador,paginaAccion,esActivo) values
+('Usuarios',2,'Usuario','Index',1),
+('Negocio',2,'Negocio','Index',1)
+
+--*menu hijos - Inventario
+insert into Menu(descripcion,idMenuPadre, controlador,paginaAccion,esActivo) values
+('Categorias',3,'Categoria','Index',1),
+('Productos',3,'Producto','Index',1)
+
+--*menu hijos - Ventas
+insert into Menu(descripcion,idMenuPadre, controlador,paginaAccion,esActivo) values
+('Nueva Venta',4,'Venta','NuevaVenta',1),
+('Historial Venta',4,'Venta','HistorialVenta',1)
+
+--*menu hijos - Reportes
+insert into Menu(descripcion,idMenuPadre, controlador,paginaAccion,esActivo) values
+('Reporte de Ventas',5,'Reporte','Index',1)
+
+
+UPDATE Menu SET idMenuPadre = idMenu where idMenuPadre is null
+
+
+--________________________________ INSERTAR ROL MENU ________________________________
+select * from Menu
+select * from RolMenu
+SELECT * FROM ROL
+
+--*administrador
+INSERT INTO RolMenu(idRol,idMenu,esActivo) values
+(1,1,1),
+(1,6,1),
+(1,7,1),
+(1,8,1),
+(1,9,1),
+(1,10,1),
+(1,11,1),
+(1,12,1)
+
+--*Empleado
+INSERT INTO RolMenu(idRol,idMenu,esActivo) values
+(2,10,1),
+(2,11,1)
+
+--*Supervisor
+INSERT INTO RolMenu(idRol,idMenu,esActivo) values
+(3,8,1),
+(3,9,1),
+(3,10,1),
+(3,11,1)
