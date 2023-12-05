@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace SistemaVenta.Entity
 {
@@ -14,7 +15,7 @@ namespace SistemaVenta.Entity
         public string? Descripcion { get; set; }
         public bool? EsActivo { get; set; }
         public DateTime? FechaRegistro { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Producto> Productos { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using DinkToPdf.Contracts;
 
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,10 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         option.LoginPath = "/Acceso/Login";
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
     });
+builder.Services.AddControllers().AddJsonOptions(opt =>
+{
+    opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 
 builder.Services.InyectarDependencia(builder.Configuration);
