@@ -39,8 +39,22 @@ namespace SistemaVenta.BLL.Implementacion
 
         public async Task<Venta> Registrar(Venta entidad)
         {
+
             try
             {
+
+                foreach (var detalleVenta in entidad.DetalleVenta)
+                {
+                    Producto producto = await _repositorioProducto.Obtener(p => p.IdProducto == detalleVenta.IdProducto);
+
+                    if (producto == null || detalleVenta.Cantidad > producto.Stock)
+                    {
+                        throw new InvalidOperationException($"No se puede realizar la venta. Stock insuficiente para el producto con ID {detalleVenta.IdProducto}.");
+                    }
+                }
+
+
+
                 return await _repositorioVenta.Registrar(entidad);
             }
             catch {

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.IdentityModel.Tokens;
 using SistemaVenta.BLL.Interfaces;
 using SistemaVenta.DAL.Interfaces;
 using SistemaVenta.Entity;
@@ -40,6 +42,13 @@ namespace SistemaVenta.BLL.Implementacion
             if(producto_existe != null)
                 throw new TaskCanceledException("El codigo de barra ya existe");
 
+            if(entidad.Precio <= 0)
+            throw new TaskCanceledException("No se pudo crear el producto porque el precio es incorrecto");
+
+            if (entidad.Stock <= 0)
+                throw new TaskCanceledException("No se pudo crear el producto porque el stock es incorrecto");
+
+
             try
             {
                 entidad.NombreImagen = NombreImagen;
@@ -51,9 +60,13 @@ namespace SistemaVenta.BLL.Implementacion
 
                 Producto producto_creado = await _repositorio.Crear(entidad);
 
-                if (producto_creado.IdProducto == 0) 
+                if (producto_creado.IdProducto == 0 ) 
                     throw new TaskCanceledException("No se pudo crear el producto");
-                
+
+               
+
+             
+
                 IQueryable<Producto> query = await _repositorio.Consultar(p => p.IdProducto == producto_creado.IdProducto);
 
                 producto_creado =  query.Include(c => c.IdCategoriaNavigation).First();
@@ -64,6 +77,12 @@ namespace SistemaVenta.BLL.Implementacion
 
                 throw;
             }
+
+
+
+            
+
+
 
         }
 

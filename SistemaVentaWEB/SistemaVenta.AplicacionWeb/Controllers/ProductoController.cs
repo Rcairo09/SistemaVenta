@@ -26,7 +26,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
 
         }
         [ClaimRequirement(controlador: "Producto", accion: "Index")]
-        public IActionResult Index()
+        public async Task <IActionResult> Index()
         {
             return View();
         }
@@ -128,6 +128,7 @@ namespace SistemaVenta.AplicacionWeb.Controllers
             return StatusCode(StatusCodes.Status200OK, gResponse);
 
         }
+
 
     }
 }
