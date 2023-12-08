@@ -24,7 +24,43 @@ namespace SistemaVenta.BLL.Implementacion
             _repositorioProducto = repositorioProducto;
             _repositorioVenta = repositorioVenta;
         }
+        public async Task<List<Venta>> ObtenerHistorialVentas(string numeroVenta, string fechaInicio, string fechaFin)
+        {
+            
+            IQueryable<Venta> query = await _repositorioVenta.Consultar();
+            fechaInicio = fechaInicio is null ? "" : fechaInicio;
+            fechaFin = fechaFin is null ? "" : fechaFin;
 
+            if (numeroVenta != null)
+            {
+                // Lógica existente para filtrar por número de venta
+                return query.Where(v => v.NumeroVenta == numeroVenta)
+                    .Include(tdv => tdv.IdTipoDocumentoVentaNavigation)
+                    .Include(u => u.IdUsuarioNavigation)
+                    .Include(dv => dv.DetalleVenta)
+                    .ToList();
+            }
+            else if (fechaInicio != "" && fechaFin != "")
+            {
+                // Lógica existente para filtrar por rango de fechas
+                DateTime fech_inicio = DateTime.ParseExact(fechaInicio, "dd/MM/yyyy", new CultureInfo("es-NI"));
+                DateTime fech_fin = DateTime.ParseExact(fechaFin, "dd/MM/yyyy", new CultureInfo("es-NI"));
+
+                return query.Where(v =>
+                    v.FechaRegistro.Value.Date >= fech_inicio.Date &&
+                    v.FechaRegistro.Value.Date <= fech_fin.Date
+                )
+                .Include(tdv => tdv.IdTipoDocumentoVentaNavigation)
+                .Include(u => u.IdUsuarioNavigation)
+                .Include(dv => dv.DetalleVenta)
+                .ToList();
+            }
+            else
+            {
+                // Lógica para obtener todas las ventas sin filtrar por número ni fechas
+                return query.ToList();
+            }
+        }
         public async Task<List<Producto>> ObtenerProductos(string busqueda)
         {
             IQueryable<Producto> query = await _repositorioProducto.Consultar( p => 

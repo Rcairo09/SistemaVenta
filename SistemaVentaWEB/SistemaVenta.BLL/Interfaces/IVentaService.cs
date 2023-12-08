@@ -15,9 +15,11 @@ namespace SistemaVenta.BLL.Interfaces
         Task<Venta> Registrar(Venta entidad);
 
         Task<List<Venta>> Historial(string numeroVenta, string fechaInicio, string fechaFin);
+        Task<List<Venta>> ObtenerHistorialVentas(string numeroVenta, string fechaInicio, string fechaFin);
 
         Task<Venta> Detalle(string numeroVenta);
         Task<List<DetalleVenta>> Reporte(string fechaInicio, string fechaFin);
+
 
     }
 }
